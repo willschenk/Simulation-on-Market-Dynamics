@@ -1,0 +1,89 @@
+/* custom.css in 'assets' folder */
+
+/* General styling for the entire application */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Style for all div elements
+div {
+    margin-bottom: 10px;
+} */
+
+.custom-slider.dcc-slider { margin-bottom: 0px; }
+
+
+/* Enhance the appearance of buttons */
+button {
+    background-color: #008cba;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #005f73;
+}
+
+/* Styling for labels */
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Slider Track Styling */
+.rc-slider-track {
+    background-color: #333;
+    height: 10px; /* Increased thickness */
+}
+
+/* Slider Handle Styling */
+.rc-slider-handle {
+    background-color: #555;
+    border-color: #333;
+    width: 20px; /* Larger handle */
+    height: 20px; /* Larger handle */
+    margin-top: -7px; /* Adjust to align with the thicker track */
+}
+
+/* Slider Rail Styling */
+.rc-slider-rail {
+    background-color: #ccc;
+    height: 10px; /* Match track thickness */
+}
+
+/* Tooltip styling on the slider */
+.rc-slider-tooltip-inner {
+    color: #ffffff;
+    background-color: #000000;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 4px;
+} 
+
+/* Style for active dots on the slider */
+.rc-slider-dot-active {
+    border-color: #008cba;
+}
+
+/* Graph customization */
+.js-plotly-plot .plot-container {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333;
+    color: #fff;
+}

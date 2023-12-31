@@ -41,7 +41,7 @@ def read_markdown_file(markdown_file):
         return file.read() 
 
 def main_layout(): 
-    markDown = read_markdown_file("README.md")
+    markDown = read_markdown_file("markDown.md")
 
     layout = html.Div([ 
         dcc.Location(id='url', refresh=False), 

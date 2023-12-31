@@ -101,10 +101,7 @@ footer {
 .dcc_graph {
     flex: 1;
     padding: 5px;
-}
-
-.rc-slider {
-}
+} 
 
 .rc-slider-rail {
     background-color: #ddd;
@@ -138,8 +135,6 @@ footer {
     top: 12px;
 }
 
-.rc-slider-mark-text {
-}
 
 .rc-slider-mark-text-active {
     color: #008cba;

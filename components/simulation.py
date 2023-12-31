@@ -75,7 +75,6 @@ def run_simulation(sim_data):
     # Adjust market price after attempting trades 
     sim_data['market_price'] = max(sim_data['market_price'] + np.sign(len(ind_willing_to_buy) - len(ind_willing_to_sell)), 1)
 
-
     ## Adjust Prices: We only adjust prices + or - 1 at a time. 
     # Adjust individual selling prices: 
     for i in range(len(goods_sellers)):  # For each seller 

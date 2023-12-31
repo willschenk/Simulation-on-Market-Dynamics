@@ -35,17 +35,25 @@ def initialize_simulation_data(sellers, buyers):
         'consumption': initial_values['consumption']
     }
 
+# Read markdown 
+def read_markdown_file(markdown_file):
+    with open(markdown_file, 'r') as file:
+        return file.read() 
+
 def main_layout(): 
-    layout = html.Div([
+    markDown = read_markdown_file("README.md")
+
+    layout = html.Div([ 
+        dcc.Location(id='url', refresh=False), 
+
         # Container 
         html.Div([
             dcc.Graph(id='price-graph'),
-            dcc.Graph(id='stock-graph')
-        ], style={'marginBottom': '20px'}),  # Adjust the bottom margin of the graph container
-
+            dcc.Graph(id='stock-graph') 
+        ], style={'position': 'top'}),  
         # Market Price Slider 
         html.Div([
-            html.Label('Market Price:', style={'fontSize': '18px', 'marginRight': '10px'}),
+            html.Label('Market Price:', style={'fontSize': '12px', 'marginRight': '10px'}),
             dcc.Slider(
                 id='market-price-slider',
                 min=0,
@@ -61,7 +69,7 @@ def main_layout():
         html.Div([
             # Producers (Sellers) Sliders
             html.Div([
-                html.Label('Producers (Sellers):', style={'fontSize': '18px', 'marginRight': '10px'}),
+                html.Label('Producers (Sellers):', style={'fontSize': '12px', 'marginRight': '10px'}),
                 dcc.Slider(
                     id='sellers-slider',
                     min=1,
@@ -71,7 +79,7 @@ def main_layout():
                     tooltip={"placement": "bottom", "always_visible": True},
                     marks={1: '1', 40: '40', initial_values['sellers']: str(initial_values['sellers'])}
                 ),
-                html.Label('Production Rate:', style={'fontSize': '18px', 'marginRight': '10px'}),
+                html.Label('Production Rate:', style={'fontSize': '12px', 'marginRight': '10px'}),
                 dcc.Slider(
                     id='production-slider',
                     min=0,
@@ -81,7 +89,7 @@ def main_layout():
                     tooltip={"placement": "bottom", "always_visible": True},
                     marks={0: '0', 10: '10', initial_values['production']: str(initial_values['production'])}
                 ),
-                html.Label('Producer Desired Stock:', style={'fontSize': '18px', 'marginRight': '10px'}),
+                html.Label('Producer Desired Stock:', style={'fontSize': '12px', 'marginRight': '10px'}),
                 dcc.Slider(
                     id='producer-desired-stock-slider',
                     min=0,
@@ -95,7 +103,7 @@ def main_layout():
 
             # Consumers 
             html.Div([
-                html.Label('Consumers (Buyers):', style={'fontSize': '18px', 'marginRight': '10px'}),
+                html.Label('Consumers (Buyers):', style={'fontSize': '12px', 'marginRight': '10px'}),
                 dcc.Slider(
                     id='buyers-slider',
                     min=1,
@@ -105,7 +113,7 @@ def main_layout():
                     tooltip={"placement": "bottom", "always_visible": True},
                     marks={1: '1', 40: '40', initial_values['buyers']: str(initial_values['buyers'])}
                 ),
-                html.Label('Consumption Rate:', style={'fontSize': '18px', 'marginRight': '10px'}),
+                html.Label('Consumption Rate:', style={'fontSize': '12px', 'marginRight': '10px'}),
                 dcc.Slider(
                     id='consumption-slider',
                     min=0,
@@ -115,7 +123,7 @@ def main_layout():
                     tooltip={"placement": "bottom", "always_visible": True},
                     marks={0: '0', 10: '10', initial_values['consumption']: str(initial_values['consumption'])}
                 ),
-                html.Label('Consumer Desired Stock:', style={'fontSize': '18px', 'marginRight': '10px'}),
+                html.Label('Consumer Desired Stock:', style={'fontSize': '12px', 'marginRight': '10px'}),
                 dcc.Slider(
                     id='consumer-desired-stock-slider',
                     min=1,
@@ -131,7 +139,7 @@ def main_layout():
         # Max Stock and Max Trades Sliders 
         html.Div([
             html.Div([
-                html.Label('Max Stock (Both):', style={'fontSize': '18px', 'marginRight': '10px'}),
+                html.Label('Max Stock (Both):', style={'fontSize': '12px', 'marginRight': '10px'}),
                 dcc.Slider(
                     id='max-stock-slider',
                     min=10,
@@ -144,7 +152,7 @@ def main_layout():
             ], style={'width': '48%', 'display': 'inline-block'}),
 
             html.Div([
-                html.Label('Max Trades:', style={'fontSize': '18px', 'marginRight': '10px'}),
+                html.Label('Max Trades:', style={'fontSize': '12px', 'marginRight': '10px'}),
                 dcc.Slider(
                     id='max-trades-slider',
                     min=1,
@@ -160,22 +168,36 @@ def main_layout():
         # Control Buttons: Reset, Start 
         html.Div([
             html.Button('Reset', id='reset-button', n_clicks=0,
-                        style={'fontSize': '20px', 'padding': '10px 20px'}),
+                        style={'fontSize': '16px', 'padding': '10px 20px'}),
             html.Button('Start', id='start-button', n_clicks=0,
-                        style={'fontSize': '20px', 'padding': '10px 20px', 'backgroundColor': 'green', 'color': 'white'})
-        ], style={'display': 'flex', 'justifyContent': 'center', 'gap': '20px', 'padding': '20px'}),
+                        style={'fontSize': '16px', 'padding': '10px 20px', 'backgroundColor': 'green', 'color': 'white'})
+        ], style={'display': 'flex', 'justifyContent': 'center', 'gap': '20px', 'padding': '20px'}), 
+        
+        # Markdown Text Box 
+        html.Div(
+            dcc.Markdown(markDown),
+            style={
+                'border': '1px solid #ddd', # Box border
+                'padding': '20px', 
+                'margin': '20px 0', 
+                'width': '80%',  
+                'margin-left': 'auto', 
+                'margin-right': 'auto', 
+                'background-color': '#f9f9f9' 
+            }
+        ), 
 
         # Interval Component 
         dcc.Interval(
             id='interval-component',
             interval=900, # Milliseconds 
             n_intervals=0,
-            disabled=True
-        ),
+            disabled=False
+        ), 
 
         # Data Storage
-        dcc.Store(id='simulation-data', data=initialize_simulation_data(initial_values['sellers'], initial_values['buyers']))
-    ], style={'fontFamily': 'Arial, sans-serif', 'maxWidth': '1000px', 'margin': 'auto'})
-
-    return layout
-
+        dcc.Store(id='simulation-data', data=initialize_simulation_data(initial_values['sellers'], initial_values['buyers'])) 
+    ], style={'fontFamily': 'Arial, sans-serif', 'maxWidth': '900px', 'position': 'relative', 'margin': 'auto'}) 
+   
+   
+    return layout 

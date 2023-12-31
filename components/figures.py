@@ -20,15 +20,15 @@ def create_price_figure(sim_data, sellers, buyers, market_price):
     price_fig.update_layout(
         title='Prices',
         yaxis_title='Price',
-        xaxis={'visible': True, 'tickvals': [-sellers/2, buyers/2], 'ticktext': ['Producer Min Selling Price', 'Consumer Max Buying Price'], 'tickfont': {'size': 16, 
+        xaxis={'visible': True, 'tickvals': [-sellers/2, buyers/2], 'ticktext': ['Producer Min Selling Price', 'Consumer Max Buying Price'], 'tickfont': {'size': 12, 
 'color': 'black'}},
-        showlegend=False,
+        showlegend=False, 
         plot_bgcolor='white',
-        yaxis=dict(showgrid=False, range=[0, y_axis_limit], title_font=dict(size=16)), 
+        yaxis=dict(showgrid=False, range=[0, y_axis_limit], title_font=dict(size=12)), 
         margin=dict(l=50, r=50, t=50, b=50),
-        font=dict(size=16), 
+        font=dict(size=12), 
         title_x=0.5, 
-        height = 350 
+        height = 250, 
     )
 
     price_fig.add_hline(
@@ -50,8 +50,8 @@ def create_stock_figure(sim_data, sellers, buyers, max_stock, producer_desired_s
     producer_bar = go.Bar(x=np.arange(-sellers, 0), y=sim_data['goods_sellers'][:sellers], name='Producer Supply', marker_color=producer_supply_colors[:sellers])
     consumer_bar = go.Bar(x=np.arange(1, buyers + 1), y=sim_data['goods_buyers'][:buyers], name='Consumer Supply', marker_color=consumer_supply_colors[:buyers])
 
-    stock_fig = go.Figure(data=[producer_bar, consumer_bar])
-
+    stock_fig = go.Figure(data=[producer_bar, consumer_bar]) 
+    
     max_goods = max(sim_data['goods_sellers'] + sim_data['goods_buyers'] + [max_stock, producer_desired_stock])
     y_axis_limit = max(max_goods * 1.1, 100)  
 
@@ -59,14 +59,15 @@ def create_stock_figure(sim_data, sellers, buyers, max_stock, producer_desired_s
     stock_fig.update_layout(
         title='Number of Goods',
         yaxis_title='Number of Goods',
-        xaxis={'visible': True, 'tickvals': [-sellers/2, buyers/2], 'ticktext': ['Producer Supply', 'Consumer Supply'], 'tickfont': {'size': 16, 'color': 'black'}},
+        xaxis={'visible': True, 'tickvals': [-sellers/2, buyers/2], 'ticktext': ['Producer Supply', 'Consumer Supply'], 'tickfont': {'size': 12, 'color': 'black'}},
         showlegend=False,
         plot_bgcolor='white',
-        yaxis=dict(showgrid=False, range=[0, y_axis_limit], title_font=dict(size=16)), 
-        margin=dict(l=50, r=50, t=50, b=50),
-        font=dict(size=16),  
+        yaxis=dict(showgrid=False, range=[0, y_axis_limit], title_font=dict(size=12)), 
+        margin=dict(l=50, r=50, t=50, b=50), 
+
+        font=dict(size=12),  
         title_x=0.5, 
-        height = 350 
+        height = 250 
     ) 
 
     stock_fig.add_hline(

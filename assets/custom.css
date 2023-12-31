@@ -1,22 +1,14 @@
 /* custom.css in 'assets' folder */
-
-/* General styling for the entire application */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    background-color: #fdefd0;
     color: #333;
-    line-height: 1.6;
+    line-height: 1.6; 
+    padding: 10px; 
 }
-
-/* Style for all div elements
-div {
-    margin-bottom: 10px;
-} */
 
 .custom-slider.dcc-slider { margin-bottom: 0px; }
 
-
-/* Enhance the appearance of buttons */
 button {
     background-color: #008cba;
     color: #fff;
@@ -24,7 +16,7 @@ button {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
     transition: background-color 0.3s ease;
 }
 
@@ -32,58 +24,135 @@ button:hover {
     background-color: #005f73;
 }
 
-/* Styling for labels */
 label {
     font-weight: bold;
     margin-bottom: 5px;
     display: block;
 }
 
-/* Slider Track Styling */
 .rc-slider-track {
     background-color: #333;
-    height: 10px; /* Increased thickness */
+    height: 10px;
 }
 
-/* Slider Handle Styling */
 .rc-slider-handle {
     background-color: #555;
     border-color: #333;
-    width: 20px; /* Larger handle */
-    height: 20px; /* Larger handle */
-    margin-top: -7px; /* Adjust to align with the thicker track */
+    width: 20px;
+    height: 20px;
+    margin-top: -7px;
 }
 
-/* Slider Rail Styling */
 .rc-slider-rail {
     background-color: #ccc;
-    height: 10px; /* Match track thickness */
+    height: 10px;
 }
 
-/* Tooltip styling on the slider */
 .rc-slider-tooltip-inner {
     color: #ffffff;
     background-color: #000000;
-    font-size: 16px;
-    padding: 5px 10px;
-    border-radius: 4px;
+    font-size: 10px;
+    padding: 4px 4px;
+    border-radius: 4px; 
+    height: 18px; 
+    width: 10px; 
+    min-width: 25px;
 } 
 
-/* Style for active dots on the slider */
 .rc-slider-dot-active {
     border-color: #008cba;
 }
 
-/* Graph customization */
 .js-plotly-plot .plot-container {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
 
-/* Footer styling */
 footer {
     text-align: center;
     padding: 20px 0;
     background-color: #333;
     color: #fff;
+}
+
+#price-graph, #stock-graph {
+    margin-top: 10px; 
+} 
+
+.dcc_graph {
+    padding: 5px;
+} 
+
+#stock-graph { 
+    margin-top: 5px;
+    margin-bottom: 0px;
+} 
+
+#price-graph { 
+    margin-top: -5px;
+}
+
+.graph-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dcc_graph {
+    flex: 1;
+    padding: 5px;
+}
+
+.rc-slider {
+}
+
+.rc-slider-rail {
+    background-color: #ddd;
+    height: 4px;
+}
+
+.rc-slider-track {
+    background-color: #008cba;
+    height: 4px;
+}
+
+.rc-slider-handle {
+    border: solid 2px #008cba;
+    background-color: #fff;
+    width: 14px;
+    height: 14px;
+    margin-top: -5px;
+}
+
+.rc-slider-handle:hover {
+    border-color: #005f73;
+}
+
+.rc-slider-handle:active {
+    box-shadow: 0 0 5px #005f73;
+}
+
+.rc-slider-mark {
+    font-size: 12px;
+    color: #333;
+    top: 12px;
+}
+
+.rc-slider-mark-text {
+}
+
+.rc-slider-mark-text-active {
+    color: #008cba;
+}
+
+.rc-slider-tooltip {
+    background-color: #000;
+    color: #fff;
+    font-size: 10px;
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+
+.rc-slider-tooltip-placement-top .rc-slider-tooltip {
+    margin-top: -24px;
 }

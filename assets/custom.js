@@ -1,16 +1,9 @@
-window.onload = function() {
-    var sellersSlider = document.getElementById('sellers-slider');
-    var buyersSlider = document.getElementById('buyers-slider');
-
-    if (sellersSlider) {
-        // Change the padding style for sellers-slider
-        // Assuming you want to change it to '0px 15px 15px'
-        sellersSlider.style.padding = '0px 0px 0px';
-    }
-
-    if (buyersSlider) {
-        // Change the padding style for buyers-slider
-        // Assuming you want to change it to '0px 15px 15px'
-        buyersSlider.style.padding = '0px 0px 0px';
-    }
-};
+// Could not find any way to initiate update_simulation upon loading the site. This is the only solution; clicking restart upon loading content. 
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        var resetButton = document.getElementById('reset-button');
+        if (resetButton) { 
+            resetButton.click(); 
+        } 
+    }, 100); 
+}); 
